@@ -110,6 +110,28 @@ public class Processor {
 				ExecutableLines.add(logic);
 			}
 			
+			if(commands[i].startsWith("set")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+						}
+						var1.setValue(parts2[1]);
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
 			if(commands[i].startsWith("add")) {
 				String parts[] = commands[i].split(" ",2);
 				String parts2[] = parts[1].split(",");
@@ -431,7 +453,7 @@ public class Processor {
 								var2 = variables[x];
 							}
 						}
-						if(var1.getValue() == var2.getValue()) {
+						if(var1.getValue().contentEquals(var2.getValue())) {
 							
 						}else {
 							this.getExecutable().setPosition(this.getExecutable().getPosition()+1);
@@ -461,9 +483,7 @@ public class Processor {
 								var2 = variables[x];
 							}
 						}
-						int i1 = Integer.parseInt(var1.getValue());
-						int i2 = Integer.parseInt(var2.getValue());
-						if(var1.getValue() != var2.getValue()) {
+						if(!var1.getValue().contentEquals(var2.getValue())) {
 							
 						}else {
 							this.getExecutable().setPosition(this.getExecutable().getPosition()+1);
