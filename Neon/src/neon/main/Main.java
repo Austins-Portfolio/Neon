@@ -10,7 +10,8 @@ public class Main {
 		Processor processor = new Processor(FileIO.readFile("C:\\Users\\austi\\Desktop\\Neon_Hello_World.txt"));
 		Executable exe = processor.process();
 		exe.preRun();
-		exe.run();
+		Thread program = new Thread(exe);
+		program.start();
 	}
 	
 }

@@ -5,7 +5,7 @@ import neon.meat.program.parts.ExecutableLine;
 import neon.meat.program.parts.Logic;
 import neon.meat.program.parts.Variable;
 
-public class Executable {
+public class Executable implements Runnable{
 
 	private ExecutableLine[] ExecutableLines;
 	private Variable[] Variables;
@@ -61,6 +61,14 @@ public class Executable {
 
 	public Anchor[] getAnchors() {
 		return Anchors;
+	}
+	
+	public void threadSleep(long millis) {
+		try {
+			Thread.sleep(millis);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

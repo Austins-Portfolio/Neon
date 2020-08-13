@@ -76,6 +76,19 @@ public class Processor {
 				ExecutableLines.add(logic);
 			}
 			
+			if(commands[i].startsWith("wait")) {
+				String parts[] = commands[i].split(" ");
+				parts[1] = parts[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						this.getExecutable().threadSleep(Long.parseLong(parts[1]));
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
 			if(commands[i].startsWith("prt")) {
 				String parts[] = commands[i].split(" ");
 				Logic logic = new Logic() {
