@@ -45,7 +45,6 @@ public class Processor {
 
 					@Override
 					public void Execute() {
-						// TODO Auto-generated method stub
 						
 					}
 					
@@ -65,7 +64,6 @@ public class Processor {
 				Logic logic = new Logic() {
 					@Override
 					public void Execute() {
-						// TODO Auto-generated method stub
 						Anchor[] anchors = this.getExecutable().getAnchors();
 						for(int x = 0; x < anchors.length; x++) {
 							if(anchors[x].getAnchorName().contentEquals(parts[1])) {
@@ -105,6 +103,370 @@ public class Processor {
 							if(variables[x].getName().contentEquals(parts[1])) {
 								this.getExecutable().setSelectedVariable(x);
 							}
+						}
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("add")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						Variable dest = variables[this.getExecutable().getSelectedVariable()];
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						dest.setValue(""+(i1+i2));
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("sub")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						Variable dest = variables[this.getExecutable().getSelectedVariable()];
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						dest.setValue(""+(i1-i2));
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("mul")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						Variable dest = variables[this.getExecutable().getSelectedVariable()];
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						dest.setValue(""+(i1*i2));
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("div")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						Variable dest = variables[this.getExecutable().getSelectedVariable()];
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						dest.setValue(""+(i1/i2));
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("mod")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						Variable dest = variables[this.getExecutable().getSelectedVariable()];
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						dest.setValue(""+(i1%i2));
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("exp")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						Variable dest = variables[this.getExecutable().getSelectedVariable()];
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						dest.setValue(""+(Math.pow(i1, i2)));
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("ifl")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						if(i1 < i2) {
+							
+						}else {
+							this.getExecutable().setPosition(this.getExecutable().getPosition()+1);
+						}
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("ifle")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						if(i1 <= i2) {
+							
+						}else {
+							this.getExecutable().setPosition(this.getExecutable().getPosition()+1);
+						}
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("ifg")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						if(i1 > i2) {
+							
+						}else {
+							this.getExecutable().setPosition(this.getExecutable().getPosition()+1);
+						}
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("ifle")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						if(i1 >= i2) {
+							
+						}else {
+							this.getExecutable().setPosition(this.getExecutable().getPosition()+1);
+						}
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("ife")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						if(var1.getValue() == var2.getValue()) {
+							
+						}else {
+							this.getExecutable().setPosition(this.getExecutable().getPosition()+1);
+						}
+					}
+					
+				};
+				ExecutableLines.add(logic);
+			}
+			
+			if(commands[i].startsWith("ifne")) {
+				String parts[] = commands[i].split(" ",2);
+				String parts2[] = parts[1].split(",");
+				parts2[0] = parts2[0].trim();
+				parts2[1] = parts2[1].trim();
+				Logic logic = new Logic() {
+					@Override
+					public void Execute() {
+						Variable[] variables = this.getExecutable().getVariables();
+						Variable var1 = null;
+						Variable var2 = null;
+						for(int x = 0; x < variables.length; x++) {
+							if(variables[x].getName().contentEquals(parts2[0])) {
+								var1 = variables[x];
+							}
+							if(variables[x].getName().contentEquals(parts2[1])) {
+								var2 = variables[x];
+							}
+						}
+						int i1 = Integer.parseInt(var1.getValue());
+						int i2 = Integer.parseInt(var2.getValue());
+						if(var1.getValue() != var2.getValue()) {
+							
+						}else {
+							this.getExecutable().setPosition(this.getExecutable().getPosition()+1);
 						}
 					}
 					
