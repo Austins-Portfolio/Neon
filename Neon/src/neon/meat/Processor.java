@@ -1,5 +1,6 @@
 package neon.meat;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import neon.meat.program.Executable;
@@ -8,8 +9,9 @@ import neon.meat.program.parts.ExecutableLine;
 import neon.meat.program.parts.Logic;
 import neon.meat.program.parts.Variable;
 
-public class Processor {
+public class Processor implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private String source;
 	private String[] commands;
 	

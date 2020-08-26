@@ -1,7 +1,10 @@
 package neon.meat.program.parts;
 
-public class Variable {
+import java.io.Serializable;
 
+public class Variable implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private String value;
 	

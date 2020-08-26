@@ -1,12 +1,15 @@
 package neon.meat.program;
 
+import java.io.Serializable;
+
 import neon.meat.program.parts.Anchor;
 import neon.meat.program.parts.ExecutableLine;
 import neon.meat.program.parts.Logic;
 import neon.meat.program.parts.Variable;
 
-public class Executable implements Runnable{
+public class Executable implements Runnable, Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private ExecutableLine[] ExecutableLines;
 	private Variable[] Variables;
 	private Anchor[] Anchors;
