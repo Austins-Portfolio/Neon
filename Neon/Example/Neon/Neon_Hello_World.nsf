@@ -1,0 +1,16 @@
+dec text1, "Hello World!";
+dec text2, "Helloo Woorld!";
+dec var1, 0;
+dec var2, 1;
+dec storage, 0;
+dst storage;
+anc loop;
+ife var1, storage;
+prt text1;
+ife var2, storage;
+prt text2;
+add var2, storage;
+ifg storage, var2;
+set storage, 0;
+wait 1000;
+jmp loop;
