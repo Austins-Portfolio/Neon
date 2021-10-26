@@ -1,2 +1,2 @@
 # Neon
-A simple programming language that reads like assembly!
+A small "interpreter" made in java. Reads like assembly.
